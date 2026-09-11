@@ -11,3 +11,4 @@ build/
 config/telegram.yaml
 config/answers.yaml
 config/knowledge.yaml
+.claude/settings.json
