@@ -1,0 +1,31 @@
+# ============================================================
+#  LOCAL LLM — SEMANTIC ANSWER MATCHING
+#  When a required Easy Apply question matches no answers.yaml key
+#  by substring, the engine asks the local LLM (via Ollama) to map
+#  it to a known answer key. A deterministic verifier re-checks
+#  every suggestion before anything is filled or memorized.
+#  LLM down/slow -> silently falls back to today's Telegram flow.
+# ============================================================
+
+enabled: true
+model: "qwen2.5:3b"
+host: "http://localhost:11434"
+timeout_seconds: 90
+min_confidence: 75
+
+# Deterministic equivalences, applied BEFORE the LLM is consulted.
+# Each group: any question containing one of `any_of` maps to `key`.
+# Transparent, testable, no model judgment involved.
+equivalences:
+  - key: "current ctc"
+    any_of: ["previous salary", "past salary", "last drawn", "last salary", "previous ctc", "past ctc"]
+  - key: "expected ctc"
+    any_of: ["salary expectation", "expected salary"]
+  - key: "notice period"
+    any_of: ["notice days", "joining time", "how soon can you join"]
+
+# Direction guard: these answer families must NEVER be mixed,
+# no matter what the LLM suggests.
+never_mix:
+  - ["expected ctc", "current ctc"]
+  - ["expected salary", "current ctc"]

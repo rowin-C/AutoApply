@@ -1,0 +1,56 @@
+# ============================================================
+#  YOUR TARGET PROFILE   (replace placeholders before first run)
+#  Every field below feeds the phase-B qualifier (match score).
+# ============================================================
+
+# Job titles you'd happily apply to (substring match, case-insensitive).
+target_titles:
+  - "Software Engineer"
+  - "Software Developer"
+  - "Frontend Developer"
+  - "Fullstack Developer"
+
+# Skills every qualifying job MUST mention in its description.
+must_skills:
+  - "React"
+  # - "FastAPI"
+  # - "PostgreSQL"
+
+# Skills that boost the match score but are not required.
+nice_skills:
+  - "Docker"
+  - "Javascript"
+  - "Typescript"
+  - "Nextjs"
+
+# Locations to search in (also cross-checked against search results).
+locations:
+  - "Bangalore"
+  - "kolkata"
+  - "India"
+  - "Remote"
+
+# Accept fully remote postings.
+remote_ok: true
+
+# Minimum annual salary to be eligible (INR for Indian boards, USD for US).
+# null = no floor.
+salary_floor: null
+
+# Minimum years of experience mentioned in the JD.
+min_experience_years: 1.0
+
+# Companies you will NEVER auto-target (substring match).
+excluded_employers:
+  - "Adecco"
+  - "Tek Systems"
+
+# Substrings that disqualify a posting when found in title or JD.
+excluded_keywords:
+
+# Treat anything titled/described as an internship as excluded.
+exclude_intern: false
+
+# Resume files to attach during the apply step (Step 2). role -> path.
+resume_files:
+  backend: "./resumes/CV.pdf"

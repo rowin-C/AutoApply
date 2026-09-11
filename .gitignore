@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+*.egg-info/
+.pytest_cache/
+dist/
+build/
+
+# Secrets / user-specific state — never commit these
+config/telegram.yaml
+config/answers.yaml
+config/knowledge.yaml

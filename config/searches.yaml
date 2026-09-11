@@ -1,0 +1,34 @@
+# ============================================================
+#  SEARCH PROFILES
+#  Each profile expands into (keyword x location) combos, which
+#  become one search URL per combo on each enabled source.
+#
+#  LOCATION ORDER = PRIORITY + FALLBACK:
+#    Locations are searched top-down. The daily listing budget
+#    (caps.yaml -> global.max_listings_per_run) fills up before
+#    a run stops, so Kolkata is captured first and Bangalore is
+#    only used to fill the remainder when Kolkata runs dry.
+# ============================================================
+
+# Which source adapters are enabled for discovery.
+sources:
+  - linkedin
+
+searches:
+  - name: "Frontend-React"
+    base_keywords: "React Frontend Developer"
+    extra_keywords: []          # leave empty to use base_keywords only
+    locations: ["Kolkata", "Remote", "Bangalore"]
+    filters:
+      posted_days: 14           # only listings from the last N days
+      remote_only: false
+      experience: null           # entry | mid | senior | null
+
+  - name: "Software-Developer"
+    base_keywords: "Software Engineer"
+    extra_keywords: ["Javascript Developer"]
+    locations: ["Kolkata", "Remote", "Bangalore"]
+    filters:
+      posted_days: 30
+      remote_only: false
+      experience: null

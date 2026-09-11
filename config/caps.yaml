@@ -1,0 +1,19 @@
+# ============================================================
+#  RATE LIMITS & BUDGETS
+#  Keep these conservative — they are the account-protection
+#  levers. Everything here is enforced by the pipeline.
+# ============================================================
+
+global:
+  max_searches_per_run: 8        # max keyword x location combos per run
+  max_listings_per_run: 30       # hard cap on phase-A cards captured per run
+  daily_detail_budget: 25        # phase-B detail page fetches per day
+  daily_apply_budget: 10         # reserved for the Step-2 apply engine
+
+sources:
+  linkedin:
+    pages_per_search: 2
+    search_delay_seconds: [30, 60]        # between searches
+    detail_delay_seconds: [8, 20]         # between detail page views
+    scroll_pause_seconds: [1.5, 3.5]      # while lazy-loading results
+    max_searches_per_run: 6
